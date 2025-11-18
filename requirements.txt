@@ -1,0 +1,4 @@
+aiogram==3.18.0
+firebase-admin==6.6.0
+ollama
+scikit-learn
