@@ -35,7 +35,7 @@ async def wallet_watcher(user_id: int, address: str, bot):
                     
                     name = wallet.get("name") or (address[:6] + "..." + address[-4:])
 
-                    response = f"""🔔 New trade — {name}\nMarket: {latest_data['title']}\nAction: {latest_data['outcome'] if latest_data['outcome'] and len(latest_data['outcome']) > 0 else latest_data['type']}\nAmount: ${latest_data['usdcSize']:.2f}\nPrice: {latest_data['price']:.2f}\nTimestamp: {datetime.fromtimestamp(float(latest_data['timestamp'])).strftime('%H:%M')} UTC"""
+                    response = f"""🔔 New trade — {name}\nMarket: {latest_data['title']}\nAction: {latest_data['side'].capitalize()} / {latest_data['outcome'] if latest_data['outcome'] and len(latest_data['outcome']) > 0 else latest_data['type']}\nAmount: ${latest_data['usdcSize']:.2f}\nPrice: {latest_data['price']:.2f}\nTimestamp: {datetime.fromtimestamp(float(latest_data['timestamp'])).strftime('%H:%M')} UTC"""
 
                     await bot.send_message(
                         chat_id=user_id,
